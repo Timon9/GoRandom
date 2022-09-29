@@ -22,7 +22,7 @@ Output: {1, -4} or {-7, 1, -4, 7}
 */
 
 func findSubArrayContainingSum(arr []int, sum int) map[int][]int {
-	fmt.Printf("Searching for sum %d subarrays in %d.\n===\n", sum, arr)
+	fmt.Printf("Searching for sum %d subArrays in %d.\n===\n", sum, arr)
 
 	m := make(map[int]int)
 	r := make(map[int][]int)
@@ -38,7 +38,7 @@ func findSubArrayContainingSum(arr []int, sum int) map[int][]int {
 			rs := arr[m[n]+1 : i+1]
 			r[len(r)+1] = rs
 
-			fmt.Printf("Found subarray: %d\n", rs)
+			fmt.Printf("Found subArray: %d\n", rs)
 		}
 		m[count_so_far] = i
 	}
@@ -69,7 +69,7 @@ func isSame(r map[int][]int, e map[int][]int) bool {
 }
 */
 
-func main() {
+func StartFindSubArrayContainingSum() {
 
 	arr := []int{2, 6, 0, 9, 7, 3, 1, 4, 1, 10}
 	findSubArrayContainingSum(arr, 15)
