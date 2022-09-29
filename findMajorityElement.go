@@ -14,6 +14,11 @@ Output: 1
 
 */
 
+func findMajorityElement(input []int) {
+	fmt.Printf("StartFindMajorityElement\n====\nInput:%d\n===\n\n", input)
+
+}
 func StartFindMajorityElement() {
-	fmt.Println("StartFindMajorityElement")
+	findMajorityElement([]int{2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2})
+	findMajorityElement([]int{1, 3, 1, 1})
 }
