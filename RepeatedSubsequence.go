@@ -23,7 +23,19 @@ Output: false
 Explanation: String "ABCA" doesn’t have any repeated subsequence
 
 */
+func repeatedSubsequence(input string) {
+	hm := make(map[byte]int)
+	for i := 0; i < len(input); i++ {
+		v := input[i]
+		hm[v]++
+		fmt.Printf("%c [%d]\n", v, v)
+	}
+	fmt.Println("===")
+	fmt.Println(hm)
+}
 
 func StartRepeatedSubsequence() {
-	fmt.Println("RepeatedSubsequence")
+	fmt.Println("Start RepeatedSubsequence")
+
+	repeatedSubsequence("XYBAXB")
 }
