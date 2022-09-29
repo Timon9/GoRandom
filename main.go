@@ -15,5 +15,8 @@ func main() {
 	if runTest == "startfindmajorityelement" {
 		StartFindMajorityElement()
 	}
+	if runTest == "repeatedsubsequence" {
+		StartRepeatedSubsequence()
+	}
 
 }
