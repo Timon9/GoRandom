@@ -18,5 +18,8 @@ func main() {
 	if runTest == "repeatedsubsequence" {
 		StartRepeatedSubsequence()
 	}
+	if runTest == "surpassercount" {
+		StartSurpasserCount()
+	}
 
 }

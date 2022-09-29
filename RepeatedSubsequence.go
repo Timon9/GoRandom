@@ -24,6 +24,7 @@ Explanation: String "ABCA" doesn’t have any repeated subsequence
 
 */
 func repeatedSubsequence(input string) {
+
 	hm := make(map[byte]int)
 	for i := 0; i < len(input); i++ {
 		v := input[i]
