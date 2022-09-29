@@ -12,4 +12,8 @@ func main() {
 	if runTest == "findsubarraycontainingsum" {
 		StartFindSubArrayContainingSum()
 	}
+	if runTest == "startfindmajorityelement" {
+		StartFindMajorityElement()
+	}
+
 }

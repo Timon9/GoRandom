@@ -1,5 +1,7 @@
 package main
 
-func findMajorityElement() {
+import "fmt"
 
+func StartFindMajorityElement() {
+	fmt.Println("StartFindMajorityElement")
 }
