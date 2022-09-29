@@ -9,6 +9,8 @@ Given an integer array having distinct elements, find the surpasser count for ea
 Input : [4, 6, 3, 9, 7, 10]
 Output: [4, 3, 3, 1, 1, 0]
 
+https://www.techiedelight.com/surpasser-count-each-element-array/
+
 */
 func surpasserCount(input []int) {
 	fmt.Println("Start SurpasserCount")
