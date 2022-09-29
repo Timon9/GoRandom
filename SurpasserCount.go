@@ -12,15 +12,23 @@ Output: [4, 3, 3, 1, 1, 0]
 https://www.techiedelight.com/surpasser-count-each-element-array/
 
 */
+
 func surpasserCount(input []int) {
 	fmt.Println("Start SurpasserCount")
 
 	hm := make(map[int]int)
 
-	for i := 0; i < len(input); i++ {
+	l := len(input)
+
+	for i := 0; i < l; i++ {
 		v := input[i]
-		hm[v]++
+
+		for ii := 1; ii < v; ii++ {
+			hm[ii]++
+		}
+
 	}
+
 	fmt.Println(hm)
 
 }
