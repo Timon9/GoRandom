@@ -14,11 +14,26 @@ Output: 1
 
 */
 
-func findMajorityElement(input []int) {
-	fmt.Printf("StartFindMajorityElement\n====\nInput:%d\n===\n\n", input)
+func findMajorityElement(input []int) int {
+	fmt.Printf("\nStartFindMajorityElement\n====\nInput:%d\n===\n\n", input)
 
+	hm := make(map[int]int)
+	a := len(input) / 2
+
+	for i := 0; i < len(input); i++ {
+		v := input[i]
+		hm[v]++
+		if hm[v] > a {
+			return v
+		}
+	}
+	return 0
 }
+
 func StartFindMajorityElement() {
-	findMajorityElement([]int{2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2})
-	findMajorityElement([]int{1, 3, 1, 1})
+	t1 := findMajorityElement([]int{2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2})
+	fmt.Println(t1)
+
+	t2 := findMajorityElement([]int{1, 3, 1, 1})
+	fmt.Println(t2)
 }
