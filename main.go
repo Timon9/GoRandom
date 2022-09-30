@@ -22,4 +22,8 @@ func main() {
 		StartSortBinaryArray()
 	}
 
+	if runTest == "maximumproductpair" {
+		StartMaximumProductPair()
+	}
+
 }
