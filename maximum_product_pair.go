@@ -21,11 +21,30 @@ Output: null
 
 */
 
-func maximumProductPair() {
+func sort(input []int) []int {
+
+	return input
+}
+
+func maximumProductPair(input []int) []int {
 	fmt.Println("MaximumProductPair")
+
+	maxPair := []int{0, 0}
+
+	/*
+		Idea: Sort the integers, select the top end 2 and compare with the bottom end 2 (-x*-x=pos)
+	*/
+	input = sort(input)
+
+	fmt.Println(input)
+
+	return maxPair
 
 }
 
 func StartMaximumProductPair() {
-	maximumProductPair()
+	fmt.Println(maximumProductPair([]int{-10, -3, 5, 6, -2}))
+	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	fmt.Println(maximumProductPair([]int{1}))
+
 }
