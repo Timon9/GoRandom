@@ -5,6 +5,9 @@ import (
 )
 
 /*
+
+Status: Done in O(n)
+
 Given an integer array, find a subarray having a given sum in it.
 
 For example,

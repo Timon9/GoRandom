@@ -4,6 +4,8 @@ import "fmt"
 
 /*
 
+Status: Done in O(n)
+
 Given an integer array of size `n`, return the element which appears more than `n/2` times. Assume that the input always contain the majority element.
 
 Input : [2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2]

@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 /*
+Status: Unclear requirements of the algorithm
 
 Given a string, check if a repeated subsequence is present in it or not. The repeated subsequence should have a length of 2 or more.
 
@@ -21,7 +22,6 @@ Explanation: String "XYBYAXBY" has XB(XBXB), XY(XYXY), YY(YYY), YB(YBYB), and YB
 Input: "ABCA"
 Output: false
 Explanation: String "ABCA" doesn’t have any repeated subsequence
-
 */
 func repeatedSubsequence(input string) {
 

@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 /*
+Status: Done in O(n)
+
 Given a binary array, in-place sort it in linear time and constant space. The output should contain all zeroes, followed by all ones.
 
 Input : [1, 0, 1, 0, 1, 0, 0, 1]
