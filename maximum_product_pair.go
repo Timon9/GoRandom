@@ -19,26 +19,50 @@ If no pair exists, the solution should return null.
 Input : [1]
 Output: null
 
+https://www.geeksforgeeks.org/quick-sort/
+https://nl.wikipedia.org/wiki/Quicksort
+https://www.techiedelight.com/find-maximum-product-two-integers-array/
+https://www.techiedelight.com/?problem=MaximumProductPair
+
 */
 
-func sort(input []int) []int {
-
+func partSort(input []int, piv int) ([]int, int, int) {
+	s := 0
+	e := 0
 	var r = []int{}
 
-	piv := 1
-	c := 0
 	for i := 0; i < len(input); i++ {
 		v := input[i]
 		if v > piv {
 			//Append after pivot
 			r = append(r, v)
+			e++
 		} else {
 			//Prepppend before pivot
 			r = append([]int{v}, r...)
-			c++
+			s++
 		}
 	}
-	fmt.Printf("Current pivot point:%d\n", len(r)-c)
+	return r, s, e
+}
+
+func sort(input []int) []int {
+
+	var r = []int{}
+	//	var np int
+
+	r, _, _ = partSort(input, 0)
+
+	//Find the next pivot point for the first block (<1)
+	//np = (len(r) - s) / 2
+
+	//	r, _, e := partSort(r, r[np])
+
+	//Find the next pivot point for the second block (1<)
+	//np = len(r) - (e / 2)
+	//fmt.Printf("e=%d final piv pos %d value %d", e, np, r[np])
+
+	//r, _, _ = partSort(r[len(r)-e:], r[np])
 	return r
 }
 
@@ -65,7 +89,7 @@ func maximumProductPair(input []int) []int {
 }
 
 func StartMaximumProductPair() {
-	fmt.Println(maximumProductPair([]int{-10, -3, 5, 6, -2}))
+	fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
 	//	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
 	//	fmt.Println(maximumProductPair([]int{1}))
 
