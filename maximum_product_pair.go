@@ -26,11 +26,12 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 
 */
 
-func partition(input []int) ([]int, int) {
+func partition(input []int) ([]int, int, int) {
 	piv := input[len(input)-1]
 	r := []int{piv}
 
 	var s int
+	var e int
 	fmt.Printf("Pivot %d\n", piv)
 
 	//Travel the input array, skipping the last (its already in the correct position)
@@ -42,21 +43,31 @@ func partition(input []int) ([]int, int) {
 			s++
 		} else {
 			r = append(r, v)
+			e++
 		}
 	}
 
-	return r, s
+	return r, s, e
 }
 
 func quickSort(input []int) []int {
 
-	a, s := partition(input)
+	a, s, _ := partition(input)
 	fmt.Println(a)
 	fmt.Println(s)
 
+	j := s
 	//Loop before the pivot
-	for s > 1 {
-		b, x := partition(input[0:s])
+	for j > 1 {
+		b, x, _ := partition(input[0:s])
+		copy(a[0:s+1], b)
+		j = x
+	}
+
+	g := len(input) - s
+	//Loop after the pivot
+	for g > 1 {
+		b, _, x := partition(input[0:s])
 		copy(a[0:s+1], b)
 		s = x
 	}
