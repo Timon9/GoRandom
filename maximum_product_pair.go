@@ -28,6 +28,8 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 
 func partition(input []int) ([]int, int, int) {
 
+	fmt.Println(input)
+
 	//The pivot point is the last entry in the array
 	piv := input[len(input)-1]
 
@@ -58,8 +60,8 @@ func quickSort(input []int) []int {
 	a, s, e := partition(input)
 
 	if s > 1 { //Before the first pivot
-		b := quickSort(input[0:s]) // Sort before the pivot
-		copy(a[0:s+1], b)          // Copy the sorted results into the new ordered array
+		b := quickSort(a[0:s]) // Sort before the pivot
+		copy(a[0:s+1], b)      // Copy the sorted results into the new ordered array
 
 	}
 
@@ -96,8 +98,8 @@ func maximumProductPair(input []int) []int {
 }
 
 func StartMaximumProductPair() {
-	fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
-	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	//fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
+	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5, 4, 6, 3, 2, 2, 4, 6, -1, 3, -4, 5, 6, 7, 8, 4, 1, 3, 5, 3, 7, 8, -1, 5, 4, 3, 1, 4, -4, -1}))
 	//	fmt.Println(maximumProductPair([]int{1}))
 
 }
