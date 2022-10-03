@@ -26,44 +26,35 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 
 */
 
-func partSort(input []int, piv int) ([]int, int, int) {
-	s := 0
-	e := 0
-	var r = []int{}
+func partition(input []int) []int {
+	piv := input[len(input)-1]
+	r := []int{piv}
 
-	for i := 0; i < len(input); i++ {
+	fmt.Printf("Pivot %d\n", piv)
+
+	//Travel the input array, skipping the last (its already in the correct position)
+	for i := 0; i < len(input)-1; i++ {
 		v := input[i]
-		if v > piv {
-			//Append after pivot
-			r = append(r, v)
-			e++
-		} else {
-			//Prepppend before pivot
+
+		if input[i] < piv {
+			fmt.Printf("Prepend %d\n", v)
 			r = append([]int{v}, r...)
-			s++
+		} else if input[i] > piv {
+			fmt.Printf("Append %d\n", v)
+			r = append(r, v)
 		}
 	}
-	return r, s, e
+
+	return r
 }
 
-func sort(input []int) []int {
+func quickSort(input []int) []int {
 
-	var r = []int{}
-	//	var np int
+	//start := 0
+	//end := len(input)
 
-	r, _, _ = partSort(input, 0)
+	return partition(input)
 
-	//Find the next pivot point for the first block (<1)
-	//np = (len(r) - s) / 2
-
-	//	r, _, e := partSort(r, r[np])
-
-	//Find the next pivot point for the second block (1<)
-	//np = len(r) - (e / 2)
-	//fmt.Printf("e=%d final piv pos %d value %d", e, np, r[np])
-
-	//r, _, _ = partSort(r[len(r)-e:], r[np])
-	return r
 }
 
 func maximumProductPair(input []int) []int {
@@ -78,7 +69,7 @@ func maximumProductPair(input []int) []int {
 	fmt.Println("Before sort:")
 	fmt.Println(input)
 
-	input = sort(input)
+	input = quickSort(input)
 	fmt.Println("After sort:")
 	fmt.Println(input)
 
