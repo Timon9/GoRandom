@@ -26,34 +26,42 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 
 */
 
-func partition(input []int) []int {
+func partition(input []int) ([]int, int) {
 	piv := input[len(input)-1]
 	r := []int{piv}
 
+	var s int
 	fmt.Printf("Pivot %d\n", piv)
 
 	//Travel the input array, skipping the last (its already in the correct position)
 	for i := 0; i < len(input)-1; i++ {
 		v := input[i]
 
-		if input[i] < piv {
-			fmt.Printf("Prepend %d\n", v)
+		if v < piv {
 			r = append([]int{v}, r...)
-		} else if input[i] > piv {
-			fmt.Printf("Append %d\n", v)
+			s++
+		} else {
 			r = append(r, v)
 		}
 	}
 
-	return r
+	return r, s
 }
 
 func quickSort(input []int) []int {
 
-	//start := 0
-	//end := len(input)
+	a, s := partition(input)
+	fmt.Println(a)
+	fmt.Println(s)
 
-	return partition(input)
+	//Loop before the pivot
+	for s > 1 {
+		b, x := partition(input[0:s])
+		copy(a[0:s+1], b)
+		s = x
+	}
+
+	return a
 
 }
 
