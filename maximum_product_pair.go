@@ -32,7 +32,6 @@ func partition(input []int) ([]int, int, int) {
 
 	var s int
 	var e int
-	fmt.Printf("Pivot %d\n", piv)
 
 	//Travel the input array, skipping the last (its already in the correct position)
 	for i := 0; i < len(input)-1; i++ {
@@ -52,13 +51,10 @@ func partition(input []int) ([]int, int, int) {
 
 func quickSort(input []int) []int {
 
-	//q := len(input)
-
 	a, s, e := partition(input)
 
 	//Before the pivot
 	if s > 1 {
-		fmt.Printf("s%d\n", s)
 		b := quickSort(input[0:s])
 		copy(a[0:s+1], b)
 
@@ -71,19 +67,6 @@ func quickSort(input []int) []int {
 		c := quickSort(a[es:q])
 		copy(a[es:q], c)
 	}
-
-	/*
-		//Loop after the pivot
-		g := len(input) - s
-		u := len(input)
-
-		for g > 1 {
-			b, _, x := partition(input[s:u])
-			//copy(a[u:s+1], b)
-			s = x
-		}
-
-	*/
 
 	return a
 
