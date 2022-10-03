@@ -52,25 +52,38 @@ func partition(input []int) ([]int, int, int) {
 
 func quickSort(input []int) []int {
 
-	a, s, _ := partition(input)
-	fmt.Println(a)
-	fmt.Println(s)
+	//q := len(input)
 
-	j := s
-	//Loop before the pivot
-	for j > 1 {
-		b, x, _ := partition(input[0:s])
+	a, s, e := partition(input)
+
+	//Before the pivot
+	if s > 1 {
+		fmt.Printf("s%d\n", s)
+		b := quickSort(input[0:s])
 		copy(a[0:s+1], b)
-		j = x
+
 	}
 
-	g := len(input) - s
-	//Loop after the pivot
-	for g > 1 {
-		b, _, x := partition(input[0:s])
-		copy(a[0:s+1], b)
-		s = x
+	//After the pivot
+	if e > 1 {
+		q := len(input)
+		es := len(input) - e
+		c := quickSort(a[es:q])
+		copy(a[es:q], c)
 	}
+
+	/*
+		//Loop after the pivot
+		g := len(input) - s
+		u := len(input)
+
+		for g > 1 {
+			b, _, x := partition(input[s:u])
+			//copy(a[u:s+1], b)
+			s = x
+		}
+
+	*/
 
 	return a
 
