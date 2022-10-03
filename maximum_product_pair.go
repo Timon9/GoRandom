@@ -27,25 +27,29 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 */
 
 func partition(input []int) ([]int, int, int) {
+
+	//The pivot point is the last entry in the array
 	piv := input[len(input)-1]
+
+	//Build the new array, starting with the pivot point
 	r := []int{piv}
 
-	var s int
-	var e int
+	var s, e int
 
 	//Travel the input array, skipping the last (its already in the correct position)
 	for i := 0; i < len(input)-1; i++ {
 		v := input[i]
 
-		if v < piv {
+		if v < piv { //If its smaller than the pivot, prepend to the new array
 			r = append([]int{v}, r...)
-			s++
-		} else {
+			s++ // Count the number of prepends
+		} else { //If its bigger than the pivot, append to the new array
 			r = append(r, v)
-			e++
+			e++ // Count the number of appends
 		}
 	}
 
+	//Return the newly build array and the count of prepend and append (before and after pivot)
 	return r, s, e
 }
 
@@ -53,23 +57,20 @@ func quickSort(input []int) []int {
 
 	a, s, e := partition(input)
 
-	//Before the pivot
-	if s > 1 {
-		b := quickSort(input[0:s])
-		copy(a[0:s+1], b)
+	if s > 1 { //Before the first pivot
+		b := quickSort(input[0:s]) // Sort before the pivot
+		copy(a[0:s+1], b)          // Copy the sorted results into the new ordered array
 
 	}
 
-	//After the pivot
-	if e > 1 {
-		q := len(input)
-		es := len(input) - e
-		c := quickSort(a[es:q])
-		copy(a[es:q], c)
+	if e > 1 { //After the first pivot
+		q := len(input)         // The end of the input array
+		es := len(input) - e    // The start of the pivot point
+		c := quickSort(a[es:q]) // Sort after the first pivot
+		copy(a[es:q], c)        // Copy the sorted results into the ordered array
 	}
 
 	return a
-
 }
 
 func maximumProductPair(input []int) []int {
@@ -96,7 +97,7 @@ func maximumProductPair(input []int) []int {
 
 func StartMaximumProductPair() {
 	fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
-	//	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
 	//	fmt.Println(maximumProductPair([]int{1}))
 
 }
