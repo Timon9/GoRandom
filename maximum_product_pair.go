@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 /*
 
@@ -27,8 +30,6 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 */
 
 func partition(input []int) ([]int, int, int) {
-
-	fmt.Println(input)
 
 	//The pivot point is the last entry in the array
 	piv := input[len(input)-1]
@@ -78,28 +79,39 @@ func quickSort(input []int) []int {
 func maximumProductPair(input []int) []int {
 	fmt.Println("MaximumProductPair")
 
+	l := len(input)
+
+	if l < 2 {
+		return nil
+	}
+
 	maxPair := []int{0, 0}
 
 	/*
 		Idea: Sort the integers, select the top end 2 and compare with the bottom end 2 (-x*-x=pos)
 	*/
-	fmt.Println("====")
-	fmt.Println("Before sort:")
-	fmt.Println(input)
 
-	input = quickSort(input)
-	fmt.Println("After sort:")
-	fmt.Println(input)
+	//Go's native quicksort alg: sort.Ints() or use own written quickSort()
+	sort.Ints(input)
 
-	fmt.Println("====")
+	lowMax := input[0] * input[1]
+	highMax := input[l-2] * input[l-1]
 
+	if lowMax > highMax {
+		maxPair[0] = input[0]
+		maxPair[1] = input[1]
+	} else {
+		maxPair[0] = input[l-2]
+		maxPair[1] = input[l-1]
+	}
 	return maxPair
 
 }
 
 func StartMaximumProductPair() {
-	//fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
-	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5, 4, 6, 3, 2, 2, 4, 6, -1, 3, -4, 5, 6, 7, 8, 4, 1, 3, 5, 3, 7, 8, -1, 5, 4, 3, 1, 4, -4, -1}))
+	fmt.Println(maximumProductPair([]int{-10, -3, 5, 6, -2}))
+	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	//	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5, 4, 6, 3, 2, 2, 4, 6, -1, 3, -4, 5, 6, 7, 8, 4, 1, 3, 5, 3, 7, 8, -1, 5, 4, 3, 1, 4, -4, -1}))
 	//	fmt.Println(maximumProductPair([]int{1}))
 
 }
