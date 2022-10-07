@@ -21,7 +21,7 @@ func deriveStrings(haystack string, needle string) {
 			for ii := 1; ii < len(needle); ii++ {
 				c = i + ii
 				if c > len(haystack)-1 {
-					c = c - len(haystack)
+					c = c % len(haystack)
 				}
 
 				if needle[ii] != haystack[c] {
@@ -39,5 +39,5 @@ func deriveStrings(haystack string, needle string) {
 }
 
 func DeriveStrings() {
-	deriveStrings("ABCD", "DABC")
+	deriveStrings("ABCD", "DABCDABCDABCDABCDA")
 }
