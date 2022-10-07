@@ -25,5 +25,8 @@ func main() {
 	if runTest == "maximumproductpair" {
 		StartMaximumProductPair()
 	}
+	if runTest == "derivestrings" {
+		DeriveStrings()
+	}
 
 }
