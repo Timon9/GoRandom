@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 /*
 
@@ -26,71 +29,89 @@ https://www.techiedelight.com/?problem=MaximumProductPair
 
 */
 
-func partSort(input []int, piv int) ([]int, int, int) {
-	s := 0
-	e := 0
-	var r = []int{}
+func partition(input []int) ([]int, int, int) {
 
-	for i := 0; i < len(input); i++ {
+	//The pivot point is the last entry in the array
+	piv := input[len(input)-1]
+
+	//Build the new array, starting with the pivot point
+	r := []int{piv}
+
+	var s, e int
+
+	//Travel the input array, skipping the last (its already in the correct position)
+	for i := 0; i < len(input)-1; i++ {
 		v := input[i]
-		if v > piv {
-			//Append after pivot
-			r = append(r, v)
-			e++
-		} else {
-			//Prepppend before pivot
+
+		if v < piv { //If its smaller than the pivot, prepend to the new array
 			r = append([]int{v}, r...)
-			s++
+			s++ // Count the number of prepends
+		} else { //If its bigger than the pivot, append to the new array
+			r = append(r, v)
+			e++ // Count the number of appends
 		}
 	}
+
+	//Return the newly build array and the count of prepend and append (before and after pivot)
 	return r, s, e
 }
 
-func sort(input []int) []int {
+func quickSort(input []int) []int {
 
-	var r = []int{}
-	//	var np int
+	a, s, e := partition(input)
 
-	r, _, _ = partSort(input, 0)
+	if s > 1 { //Before the first pivot
+		b := quickSort(a[0:s]) // Sort before the pivot
+		copy(a[0:s+1], b)      // Copy the sorted results into the new ordered array
 
-	//Find the next pivot point for the first block (<1)
-	//np = (len(r) - s) / 2
+	}
 
-	//	r, _, e := partSort(r, r[np])
+	if e > 1 { //After the first pivot
+		q := len(input)         // The end of the input array
+		es := len(input) - e    // The start of the pivot point
+		c := quickSort(a[es:q]) // Sort after the first pivot
+		copy(a[es:q], c)        // Copy the sorted results into the ordered array
+	}
 
-	//Find the next pivot point for the second block (1<)
-	//np = len(r) - (e / 2)
-	//fmt.Printf("e=%d final piv pos %d value %d", e, np, r[np])
-
-	//r, _, _ = partSort(r[len(r)-e:], r[np])
-	return r
+	return a
 }
 
 func maximumProductPair(input []int) []int {
 	fmt.Println("MaximumProductPair")
+
+	l := len(input)
+
+	if l < 2 {
+		return nil
+	}
 
 	maxPair := []int{0, 0}
 
 	/*
 		Idea: Sort the integers, select the top end 2 and compare with the bottom end 2 (-x*-x=pos)
 	*/
-	fmt.Println("====")
-	fmt.Println("Before sort:")
-	fmt.Println(input)
 
-	input = sort(input)
-	fmt.Println("After sort:")
-	fmt.Println(input)
+	//Go's native quicksort alg: sort.Ints() or use own written quickSort()
+	sort.Ints(input)
 
-	fmt.Println("====")
+	lowMax := input[0] * input[1]
+	highMax := input[l-2] * input[l-1]
 
+	if lowMax > highMax {
+		maxPair[0] = input[0]
+		maxPair[1] = input[1]
+	} else {
+		maxPair[0] = input[l-2]
+		maxPair[1] = input[l-1]
+	}
 	return maxPair
 
 }
 
 func StartMaximumProductPair() {
-	fmt.Println(maximumProductPair([]int{-10, -3, 7, 6, -2}))
-	//	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	fmt.Println(maximumProductPair([]int{-10, -3, 5, 6, -2}))
+	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5}))
+	//	fmt.Println(maximumProductPair([]int{-4, 3, 2, 7, -5, 4, 6, 3, 2, 2, 4, 6, -1, 3, -4, 5, 6, 7, 8, 4, 1, 3, 5, 3, 7, 8, -1, 5, 4, 3, 1, 4, -4, -1}))
 	//	fmt.Println(maximumProductPair([]int{1}))
 
 }
