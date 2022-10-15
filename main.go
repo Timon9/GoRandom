@@ -9,28 +9,32 @@ func main() {
 
 	runTest := strings.ToLower(os.Args[1])
 
-	if runTest == "findsubarraycontainingsum" {
+	switch runTest {
+
+	case "findsubarraycontainingsum":
 		StartFindSubArrayContainingSum()
-	}
-	if runTest == "startfindmajorityelement" {
+
+	case "startfindmajorityelement":
 		StartFindMajorityElement()
-	}
-	if runTest == "repeatedsubsequence" {
+
+	case "repeatedsubsequence":
 		StartRepeatedSubsequence()
-	}
-	if runTest == "startsortbinaryarray" {
+
+	case "startsortbinaryarray":
 		StartSortBinaryArray()
-	}
 
-	if runTest == "maximumproductpair" {
+	case "maximumproductpair":
 		StartMaximumProductPair()
-	}
-	if runTest == "derivestrings" {
-		DeriveStrings()
-	}
 
-	if runTest == "dutchnationalflagproblem" {
+	case "derivestrings":
+		DeriveStrings()
+
+	case "dutchnationalflagproblem":
 		DutchNationalFlagProblem()
+
+	case "mergearrays":
+		MergeArrays()
+
 	}
 
 }

@@ -11,7 +11,7 @@ Output: [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2]
 
 */
 
-func solve(input []int) []int {
+func solveDutchNationalFlagProblem(input []int) []int {
 
 	var s []int
 	var m []int
@@ -36,5 +36,5 @@ func solve(input []int) []int {
 
 func DutchNationalFlagProblem() {
 	fmt.Println("Dutch National Flag Problem")
-	fmt.Println(solve([]int{0, 1, 2, 2, 1, 0, 0, 2, 0, 1, 1, 0}))
+	fmt.Println(solveDutchNationalFlagProblem([]int{0, 1, 2, 2, 1, 0, 0, 2, 0, 1, 1, 0}))
 }
