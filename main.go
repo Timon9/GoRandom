@@ -29,4 +29,8 @@ func main() {
 		DeriveStrings()
 	}
 
+	if runTest == "dutchnationalflagproblem" {
+		DutchNationalFlagProblem()
+	}
+
 }

@@ -39,5 +39,5 @@ func deriveStrings(haystack string, needle string) {
 }
 
 func DeriveStrings() {
-	deriveStrings("ABCD", "DABCDABCDABCDABCDA")
+	deriveStrings("ABCD", "BCDA")
 }
