@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 /*
 
@@ -15,13 +18,18 @@ Output: X[] = [1, 2, 3, 5, 6, 8, 9, 10, 15]
 
 */
 
-func findNextFilledCell(x []int) (int, error) {
-	for i := 0; i < len(x); i++ {
+/*
+Function to find the first filled cell starting from cursor
+*/
+func findNextFilledCell(x []int, c int) (int, int, error) {
+
+	for i := c; i < len(x); i++ {
 		if x[i] > 0 {
-			return x[i], nil
+			return c, x[i], nil
 		}
+		c++
 	}
-	return 0, nil
+	return 0, 0, errors.New("no next cell found")
 }
 
 func solveMergeArraysII(x []int, y []int) {
@@ -35,22 +43,28 @@ func solveMergeArraysII(x []int, y []int) {
 
 	for i := 0; i < m; i++ {
 		v := x[i]
-		r := y[0]
 
 		if v == 0 { // We found a vacant cell
-			if (i + 1) < m { // We have a next cell
 
-				hn, err := findNextFilledCell(x[i:m]) // The highest next cell of X
+			hi, hn, err := findNextFilledCell(x, i+1) // The highest next cell of X
 
-				if len(y) > 0 && (r < hn || err == nil) { // The lowest of Y is lower than the next filled cell of X , lets use that.
-					fmt.Printf("Swapping from Y #%d for %d\n", i, r)
-				} else if err == nil { // Use the next of X
-					fmt.Printf("Swapping from X #%d for %d\n", i, hn)
-				}
+			if len(y) >= 0 && (y[0] < hn || err != nil) { // The lowest of Y is lower than the next filled cell of X , lets use that.
+				x[i] = y[0]
+
+				t := len(y)
+				y = y[1:t] // Remove y[0]
+
+			} else if err == nil { // Use the next of X
+
+				x[i] = hn
+				x[hi] = v
 
 			}
+
 		}
 	}
+
+	fmt.Println(x)
 }
 func MergeArraysII() {
 	fmt.Println("MergeArraysII")
