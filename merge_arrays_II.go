@@ -19,8 +19,10 @@ Output: X[] = [1, 2, 3, 5, 6, 8, 9, 10, 15]
 */
 
 /*
-Function to find the first filled cell starting from cursor
+Function to find the first filled cell from array `x` starting from cursor `c`.
+Returns the cursor, value of first cell and error.
 */
+
 func findNextFilledCell(x []int, c int) (int, int, error) {
 
 	for i := c; i < len(x); i++ {
@@ -40,6 +42,10 @@ func solveMergeArraysII(x []int, y []int) {
 		fmt.Println("Incorrect input array length. Expecting X to be larger than Y")
 		return
 	}
+
+	/*
+		Traverse `x` searching for vacant cells.
+	*/
 
 	for i := 0; i < m; i++ {
 		v := x[i]
