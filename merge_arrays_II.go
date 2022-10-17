@@ -15,6 +15,14 @@ Output: X[] = [1, 2, 3, 5, 6, 8, 9, 10, 15]
 
 */
 func solveMergeArraysII(x []int, y []int) {
+	m := len(x)
+	n := len(y)
+
+	if m < n {
+		fmt.Println("Incorrect input array length. Expecting X to be larger than Y")
+		return
+	}
+
 	for i := 0; i < len(x); i++ {
 		v := x[i]
 		fmt.Println(v)
