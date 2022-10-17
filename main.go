@@ -34,7 +34,9 @@ func main() {
 
 	case "mergearrays":
 		MergeArrays()
-
+	case "mergearrays2":
+	case "mergearraysii":
+		MergeArraysII()
 	}
 
 }
