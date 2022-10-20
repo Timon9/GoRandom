@@ -1,11 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strings"
 )
 
 func main() {
+
+	if len(os.Args) < 2 {
+		fmt.Println("No test provided.")
+		return
+	}
 
 	runTest := strings.ToLower(os.Args[1])
 
@@ -37,6 +43,8 @@ func main() {
 	case "mergearrays2":
 	case "mergearraysii":
 		MergeArraysII()
+	case "maximumcontinuoussequence":
+		MaximumContinuousSequence()
 	}
 
 }
