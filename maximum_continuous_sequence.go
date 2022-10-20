@@ -22,11 +22,24 @@ Explanation: Invalid Input (all 1’s)
 
 func solveMaximumContinuousSequence(input []int) int {
 
+	hm := []int{0, 0, 0} // Max count, max position, current count
+
 	for i := 0; i < len(input); i++ {
-		fmt.Println(input[i])
+		v := input[i]
+
+		if v == 1 {
+			hm[2]++
+		} else {
+			hm[2] = 0
+		}
+
+		if hm[2] > hm[0] {
+			hm[2] = hm[0]
+			hm[1] = i - 2
+		}
 	}
 
-	return 0
+	return hm[1]
 
 }
 
@@ -36,7 +49,20 @@ func MaximumContinuousSequence() {
 	if r == 7 {
 		fmt.Println("Success.")
 	} else {
-		fmt.Println("Failed.")
+		fmt.Println("Failed, expected 7 got ", r)
 	}
 
+	r2 := solveMaximumContinuousSequence([]int{0, 1, 1, 0, 0})
+	if r2 == 0 {
+		fmt.Println("Success.")
+	} else {
+		fmt.Println("Failed, expected 0 got ", r2)
+	}
+
+	r3 := solveMaximumContinuousSequence([]int{1, 1})
+	if r3 == -1 {
+		fmt.Println("Success.")
+	} else {
+		fmt.Println("Failed, expected -1 got ", r3)
+	}
 }
