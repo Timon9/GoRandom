@@ -20,9 +20,9 @@ func solveShuffleArrayIII(numbers []int) []int {
 	s := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(s)
 
-	for i := len(numbers) - 1; i >= 0; i-- {
+	for i := 0; i < len(numbers); i++ {
 
-		j := r.Intn(len(numbers))
+		j := i + r.Intn(len(numbers)-i) // Skip the ones we already sorted
 		v := numbers[i]
 
 		numbers[i] = numbers[j]
