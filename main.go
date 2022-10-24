@@ -40,14 +40,19 @@ func main() {
 
 	case "mergearrays":
 		MergeArrays()
+
 	case "mergearrays2":
 	case "mergearraysii":
 		MergeArraysII()
+
 	case "maximumcontinuoussequence":
 		MaximumContinuousSequence()
 
 	case "shufflearrayiii":
 		ShuffleArrayIII()
+
+	case "rearrangearray":
+		RearrangeArray()
 	}
 
 }
