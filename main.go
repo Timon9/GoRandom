@@ -45,6 +45,9 @@ func main() {
 		MergeArraysII()
 	case "maximumcontinuoussequence":
 		MaximumContinuousSequence()
+
+	case "shufflearrayiii":
+		ShuffleArrayIII()
 	}
 
 }
