@@ -18,6 +18,29 @@ Output: [6, 9, 2, 5, 1, 4] or [1, 5, 2, 6, 4, 9], or any other valid combination
 
 */
 func solveRearrangeArray(numbers []int) {
+
+	for i := 1; i < len(numbers)-1; i = i + 2 {
+
+		v := numbers[i]
+
+		l := numbers[i-1]
+		r := numbers[i+1]
+
+		if v < l {
+			// Swap l and v
+			tmp := numbers[i-1]
+			numbers[i-1] = numbers[i]
+			numbers[i] = tmp
+		}
+
+		if v < r {
+			// Swap r and v
+			numbers[i+1] = v
+			numbers[i] = r
+		}
+	}
+
+	fmt.Println(numbers)
 }
 
 func RearrangeArray() {
