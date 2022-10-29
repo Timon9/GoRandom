@@ -34,16 +34,14 @@ func solveReplaceArrayElements(input []int) {
 
 	// replace each element with the product of its left and right subarray
 	for i := 0; i < len(input); i++ {
-		s := left[i] * right[i]
-		fmt.Println(s)
+		input[i] = left[i] * right[i]
 	}
-	fmt.Println(left)
-	fmt.Println(right)
 
+	fmt.Println(input)
 }
 
 func ReplaceArrayElements() {
 	solveReplaceArrayElements([]int{1, 2, 3, 4, 5})
-	// solveReplaceArrayElements([]int{5, 3, 4, 2, 6, 8})
+	solveReplaceArrayElements([]int{5, 3, 4, 2, 6, 8})
 
 }
