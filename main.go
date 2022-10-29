@@ -53,6 +53,9 @@ func main() {
 
 	case "rearrangearray":
 		RearrangeArray()
+
+	case "replacearrayelements":
+		ReplaceArrayElements()
 	}
 
 }
