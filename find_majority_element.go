@@ -31,11 +31,30 @@ func findMajorityElement(input []int) int {
 	}
 	return 0
 }
+func findMajorityElementBoyerMooreAlg(input []int) int { // No hashmap but boyer-moore alg
+	fmt.Printf("\nStartFindMajorityElement\n====\nInput:%d\n===\n\n", input)
 
+	m := 0 // Majority Element
+	c := 0 // Counter
+
+	for i := 0; i < len(input); i++ {
+		v := input[i]
+		if c == 0 {
+			m = v
+			c++
+		} else if m == v {
+			c++
+		} else {
+			c--
+		}
+
+	}
+	return m
+}
 func StartFindMajorityElement() {
 	t1 := findMajorityElement([]int{2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2})
 	fmt.Println(t1)
 
-	t2 := findMajorityElement([]int{1, 3, 1, 1})
+	t2 := findMajorityElementBoyerMooreAlg([]int{2, 8, 7, 2, 2, 5, 2, 3, 1, 2, 2})
 	fmt.Println(t2)
 }
