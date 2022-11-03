@@ -56,6 +56,9 @@ func main() {
 
 	case "replacearrayelements":
 		ReplaceArrayElements()
+
+	case "longestbitonicsubarray":
+		LongestBitonicSubarray()
 	}
 
 }
