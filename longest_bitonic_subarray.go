@@ -31,6 +31,7 @@ func solveLongestBitonicSubarray(input []int) {
 		a[i] = c
 	}
 
+	// Build descending auxiliary array
 	d := make([]int, len(input))
 	d[0] = 0
 	c = 0
@@ -47,7 +48,7 @@ func solveLongestBitonicSubarray(input []int) {
 	m := make(map[int]int)
 
 	for i := 0; i < len(input)-1; i++ {
-		v := a[i] + d[i+a[i]]
+		v := a[i] + d[i+a[i]] // Total length subarray is assending + decending
 		if v > max_length {
 			max_length = v
 			m[0] = v         // value
