@@ -59,6 +59,9 @@ func main() {
 
 	case "longestbitonicsubarray":
 		LongestBitonicSubarray()
+
+	case "maximumdifferencepair":
+		MaximumDifferencePair()
 	}
 
 }
