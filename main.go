@@ -68,6 +68,9 @@ func main() {
 
 	case "maximumsumsubarrayii":
 		MaximumSumSubarrayII()
+
+	case "maximumsumcircularsubarray":
+		MaximumSumCircularSubarray()
 	}
 
 }
