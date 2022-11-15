@@ -62,8 +62,12 @@ func main() {
 
 	case "maximumdifferencepair":
 		MaximumDifferencePair()
+
 	case "maximumsumsubarray":
 		MaximumSumSubarray()
+
+	case "maximumsumsubarrayii":
+		MaximumSumSubarrayII()
 	}
 
 }
