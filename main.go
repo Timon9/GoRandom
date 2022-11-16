@@ -71,6 +71,9 @@ func main() {
 
 	case "maximumsumcircularsubarray":
 		MaximumSumCircularSubarray()
+
+	case "combinations":
+		Combinations()
 	}
 
 }
