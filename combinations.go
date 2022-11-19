@@ -55,7 +55,7 @@ func Combinations() {
 
 	solveCombinations([]int{2, 3, 4}, 2)
 	solveCombinations([]int{1, 2, 1}, 2)
-	//solveCombinations([]int{1, 1, 1}, 2)
+	solveCombinations([]int{1, 1, 1}, 2)
 	//solveCombinations([]int{1, 2, 3}, 4)
 	//solveCombinations([]int{1, 2}, 0)
 }
