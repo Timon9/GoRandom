@@ -25,18 +25,37 @@ Output: {[]}
 */
 
 func find(a []int, k int, s int, m map[mapkey]bool) {
+
+	// fmt.Println("=> Finding", s, "..*")
+	// if k == 0 || k > len(a) {
+	// 	return
+	// }
+
+	j := 0
+	r := []int{s}
 	for i := 0; i < len(a); i++ {
 		v := a[i]
-		if _, ok := m[mapkey{s, v}]; !ok {
-			fmt.Println("[", s, ",", v, "]")
-			m[mapkey{s, v}] = true
+		r = append(r, v)
+		//		if _, ok := m[mapkey{s, v}]; !ok {
+		// fmt.Println("[", s, ",", v, "]")
+		if j == 0 {
+			fmt.Println(r)
+			r = []int{s}
+			j = 0
+		} else {
+			j--
 		}
+		// m[mapkey{s, v}] = true
+		//		}
 	}
 
 }
 func solveCombinations(a []int, k int) {
 
+	fmt.Println("Finding combinations k=", k, " ", a)
+
 	if len(a) == 0 && k > len(a) {
+		fmt.Println("==invalid==")
 		return // Invalid
 	}
 	if k == 0 {
@@ -44,7 +63,6 @@ func solveCombinations(a []int, k int) {
 	}
 
 	m := make(map[mapkey]bool)
-	// Maybe better to use struct? Need [Key,Key] = true/false
 
 	for i := 0; i < len(a); i++ {
 		v := a[i]
