@@ -24,29 +24,20 @@ Output: {[]}
 
 */
 
-func find(a []int, k int, s int, m map[mapkey]bool) {
+func find(a []int, k int, s int) {
 
-	// fmt.Println("=> Finding", s, "..*")
-	// if k == 0 || k > len(a) {
-	// 	return
-	// }
-
-	j := 0
+	j := k - 1
 	r := []int{s}
 	for i := 0; i < len(a); i++ {
 		v := a[i]
 		r = append(r, v)
-		//		if _, ok := m[mapkey{s, v}]; !ok {
-		// fmt.Println("[", s, ",", v, "]")
+		j--
+
 		if j == 0 {
 			fmt.Println(r)
 			r = []int{s}
-			j = 0
-		} else {
-			j--
+			j = k - 1
 		}
-		// m[mapkey{s, v}] = true
-		//		}
 	}
 
 }
@@ -62,12 +53,10 @@ func solveCombinations(a []int, k int) {
 		return
 	}
 
-	m := make(map[mapkey]bool)
-
 	for i := 0; i < len(a); i++ {
 		v := a[i]
 		b := len(a)
-		find(a[i+1:b], k, v, m)
+		find(a[i+1:b], k, v)
 
 	}
 	fmt.Println("=====")
@@ -81,10 +70,6 @@ func Combinations() {
 	solveCombinations([]int{1, 2, 1}, 2)
 	solveCombinations([]int{1, 1, 1}, 2)
 	solveCombinations([]int{1, 2, 3}, 4)
+	solveCombinations([]int{1, 2, 3, 5, 2, 1}, 3)
 	//solveCombinations([]int{1, 2}, 0)
-}
-
-type mapkey struct {
-	f int
-	s int
 }
