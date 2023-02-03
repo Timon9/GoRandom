@@ -43,6 +43,9 @@ func find(a []int, k int, s int) {
 }
 func solveCombinations(a []int, k int) {
 
+	/*
+		TODO: Only return distinct sets of size k
+	*/
 	fmt.Println("Finding combinations k=", k, " ", a)
 
 	if len(a) == 0 && k > len(a) {
