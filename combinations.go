@@ -1,9 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
-
 Given an integer array, find all distinct combinations of a given length `k`.
 The solution should return a set containing all the distinct combinations, while preserving the relative order of elements as they appear in the array.
 
@@ -21,58 +22,49 @@ Output: {}
 
 Input : [1, 2], k = 0
 Output: {[]}
-
 */
 
-func find(a []int, k int, s int) {
+// combination returns all distinct combinations of length k in an integer array
+func combination(arr []int, k int) [][]int {
+	// result to store the final combinations
+	var result [][]int
 
-	j := k - 1
-	r := []int{s}
-	for i := 0; i < len(a); i++ {
-		v := a[i]
-		r = append(r, v)
-		j--
+	// recursive function to generate combinations
+	var combinationUtil func(arr []int, k int, start int, subset []int)
+	combinationUtil = func(arr []int, k int, start int, subset []int) {
+		// if length of current subset is equal to k, add it to the result
+		if len(subset) == k {
+			result = append(result, append([]int(nil), subset...))
+			return
+		}
 
-		if j == 0 {
-			fmt.Println(r)
-			r = []int{s}
-			j = k - 1
+		// generate combinations by adding current element to the subset and calling the function recursively
+		for i := start; i < len(arr); i++ {
+			// skip duplicate elements
+			if i > start && arr[i] == arr[i-1] {
+				continue
+			}
+			combinationUtil(arr, k, i+1, append(subset, arr[i]))
 		}
 	}
 
-}
-func solveCombinations(a []int, k int) {
+	// call the function to generate combinations
+	combinationUtil(arr, k, 0, []int{})
 
-	/*
-		TODO: Only return distinct sets of size k
-	*/
-	fmt.Println("Finding combinations k=", k, " ", a)
-
-	if len(a) == 0 && k > len(a) {
-		fmt.Println("==invalid==")
-		return // Invalid
-	}
-	if k == 0 {
-		return
-	}
-
-	for i := 0; i < len(a); i++ {
-		v := a[i]
-		b := len(a)
-		find(a[i+1:b], k, v)
-
-	}
-	fmt.Println("=====")
-
+	return result
 }
 
 func Combinations() {
 	fmt.Println("Combinations")
 
-	solveCombinations([]int{2, 3, 4}, 2)
-	solveCombinations([]int{1, 2, 1}, 2)
-	solveCombinations([]int{1, 1, 1}, 2)
-	solveCombinations([]int{1, 2, 3}, 4)
-	solveCombinations([]int{1, 2, 3, 5, 2, 1}, 3)
-	//solveCombinations([]int{1, 2}, 0)
+	arr := []int{1, 2, 1}
+	k := 2
+	fmt.Println(combination(arr, k))
+
+	// solveCombinations([]int{2, 3, 4}, 2)
+	// solveCombinations([]int{1, 2, 1}, 2)
+	// solveCombinations([]int{1, 1, 1}, 2)
+	// solveCombinations([]int{1, 2, 3}, 4)
+	// solveCombinations([]int{1, 2, 3, 5, 2, 1}, 3)
+	// //solveCombinations([]int{1, 2}, 0)
 }
